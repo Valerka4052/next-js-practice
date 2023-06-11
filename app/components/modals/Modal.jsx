@@ -51,6 +51,7 @@ export const Modal = ({ isOpen, onClose, onSubmit, title, body, footer, actionLa
                                     {secondaryActionLabel && handleSecondaryAction && (<Button outline disabled={disabled} label={secondaryActionLabel} onClick={handleSecondaryAction} />)}
                                     <Button disabled={disabled} label={actionLabel} onClick={handlesubmit} />
                                 </div>
+                                {footer}
                             </div>
                         </div>
                     </div>

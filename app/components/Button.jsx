@@ -1,7 +1,7 @@
 
 
 'use client'
-export const Button = ({ onClick, label, disabled, outline, small, icon: Icon }) => {
+export const Button = ({ onClick, label='Continue', disabled, outline, small, icon: Icon }) => {
     return (
         <button className={`relative
          disabled:opcity-70
