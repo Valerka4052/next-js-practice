@@ -5,8 +5,8 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from 'bcrypt'
 import { PrismaAdapter } from "@auth/prisma-adapter";
 
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient()
+// import { PrismaClient } from "@prisma/client";
+import prisma from '../../../libs/prismadb';
 // import prisma from '../../../libs/prismadb'
 export const authOptions = {
   adapter: PrismaAdapter(prisma),
@@ -33,9 +33,11 @@ export const authOptions = {
       }
     }),
   ],
-  pages: { signIn: '/', }, debug: process.env.NODE_ENV === 'development', session: { stragedy:"jwt"}, secret: process.env.NEXTAUTH_SECRET,
+  pages: { signIn: '/', }, debug: process.env.NODE_ENV === 'development', session: { stragedy: "jwt" }, secret: process.env.NEXTAUTH_SECRET,
 };
 export default NextAuth(authOptions);
+
+
 // export default NextAuth({
 //     adapter: PrismaAdapter(prisma),
 //     providers: [
