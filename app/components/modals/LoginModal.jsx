@@ -12,7 +12,7 @@ import { toast } from 'react-hot-toast';
 import { Button } from '../Button';
 import useLoginModal from '@/app/hooks/useLoginModal';
 import { useRouter } from 'next/navigation';
-
+// import { POST } from "@/app/api/auth/[...nextauth]/route";
 export const LoginModal = () => {
     const router = useRouter()
     const loginModal = useLoginModal();
@@ -21,15 +21,17 @@ export const LoginModal = () => {
 
     const onSubmit = (data) => {
         console.log('data', data)
-        // setisLoading(true);
+        setisLoading(true);
         signIn('credentials', { ...data, redirect: false })
-        //     .then((res) => {console.log('res',res)});
-        // if (callback?.ok) {
-        //     toast.success('Logged in');
-        //     router.refresh();
-        //     loginModal.onClose();
-        // };
-        // if (callback?.error) toast.error(callback.error);
+            .then((callback) => {
+                console.log('res', callback); setisLoading(false);
+                if (callback?.error) return toast.error(callback.error);
+                if (callback?.ok) {
+                    toast.success('Logged in');
+                    router.refresh();
+                    loginModal.onClose();
+                };
+            });
     };
 
     const bodyContent = (

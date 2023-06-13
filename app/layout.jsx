@@ -5,6 +5,8 @@ import { ClientOnly } from './components/ClientOnly';
 import { RegisterModal } from './components/modals/RegisterModal';
 import { ToasterProvider } from './providers/ToasterProvider';
 import { LoginModal } from './components/modals/LoginModal';
+import getCurrentUser from './actoins/getCurrentUser';
+import prisma from './libs/prismadb';
 
 const inter = Nunito({ subsets: ['latin'] })
 
@@ -13,14 +15,15 @@ export const metadata = {
   description: 'AirBnb clone',
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const currentUser = await getCurrentUser();
   return (
     <html lang="en">
       <body className={inter.className}>
         <ClientOnly>
           <ToasterProvider />
-          <Navbar />
-          <LoginModal/>
+          <Navbar currentUser={currentUser} />
+          <LoginModal />
           <RegisterModal />
         </ClientOnly>
         {children}
