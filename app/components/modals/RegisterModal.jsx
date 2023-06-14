@@ -17,7 +17,7 @@ import { Button } from '../Button';
 export const RegisterModal = () => {
     const registerModal = useRegisterModal();
     const [isLoading, setisLoading] = useState(false);
-    // console.log('registerModal', registerModal);
+
     const { register, handleSubmit, formState: { errors } } = useForm({ defaultValues: { name: '', email: '', password: '', } });
     const onSubmit = (data) => {
         setisLoading(true);

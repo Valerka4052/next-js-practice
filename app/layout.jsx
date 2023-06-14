@@ -6,7 +6,6 @@ import { RegisterModal } from './components/modals/RegisterModal';
 import { ToasterProvider } from './providers/ToasterProvider';
 import { LoginModal } from './components/modals/LoginModal';
 import getCurrentUser from './actoins/getCurrentUser';
-import prisma from './libs/prismadb';
 
 const inter = Nunito({ subsets: ['latin'] })
 
