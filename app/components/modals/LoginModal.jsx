@@ -34,13 +34,13 @@ export const LoginModal = () => {
     signIn('credentials', { ...data, redirect: false })
       .then((callback) => {
         console.log('res', callback); setisLoading(false);
-        if (callback?.ok) {
+        if (callback?.error==='Callback') {
           toast.success('Logged in');
           router.refresh();
           loginModal.onClose();
           return
         }
-        if (callback?.error) return toast.error(callback.error);
+        if (callback?.error!=='Callback') return toast.error(callback.error);
       });
   };
      
