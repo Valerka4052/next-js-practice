@@ -28,20 +28,22 @@ export const LoginModal = () => {
         [loginModal, registerModal],
     );
 
-    const onSubmit = (data) => {
-        console.log('data', data)
-        setisLoading(true);
-        signIn('credentials', { ...data, redirect: false })
-            .then((callback) => {
-                console.log('res', callback); setisLoading(false);
-                if (callback?.error) return toast.error(callback.error);
-                if (callback?.ok) {
-                    toast.success('Logged in');
-                    router.refresh();
-                    loginModal.onClose();
-                };
-            });
-    };
+  const onSubmit = (data) => {
+    console.log('data', data)
+    setisLoading(true);
+    signIn('credentials', { ...data, redirect: false })
+      .then((callback) => {
+        console.log('res', callback); setisLoading(false);
+        if (callback?.ok) {
+          toast.success('Logged in');
+          router.refresh();
+          loginModal.onClose();
+          return
+        }
+        if (callback?.error) return toast.error(callback.error);
+      });
+  };
+     
 
     const bodyContent = (
         <div className="flex flex-col gap-4">
