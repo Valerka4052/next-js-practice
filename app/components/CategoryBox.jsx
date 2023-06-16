@@ -1,6 +1,6 @@
 'use client'
 import { useRouter, useSearchParams } from "next/navigation";
-import qs from 'query-string'
+import qs from 'query-string';
 import { useCallback } from "react";
 
 export const CategoryBox = ({ icon: Icon, label, selected }) => {
@@ -24,6 +24,6 @@ export const CategoryBox = ({ icon: Icon, label, selected }) => {
             <div className="font-medium text-sm">{label}</div>
         </div>
     );
-}
+};
 
 

@@ -12,12 +12,21 @@ import { toast } from 'react-hot-toast';
 import { Button } from '../Button';
 import useLoginModal from '@/app/hooks/useLoginModal';
 import { useRouter } from 'next/navigation';
+import useRegisterModal from "@/app/hooks/useRegisterModal";
 
 export const LoginModal = () => {
     const router = useRouter()
+    const registerModal = useRegisterModal();
     const loginModal = useLoginModal();
     const [isLoading, setisLoading] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm({ defaultValues: { email: '', password: '', } });
+    const toggle = useCallback(
+        () => {
+            loginModal.onClose();
+            registerModal.onOpen();
+        },
+        [loginModal, registerModal],
+    );
 
     const onSubmit = (data) => {
         console.log('data', data)
@@ -47,9 +56,9 @@ export const LoginModal = () => {
             <Button outline label='Continue with Google' icon={FcGoogle} onClick={() => signIn('google')} />
             <Button outline label='Continue with Github' icon={AiFillGithub} onClick={() => signIn("github")} />
             <div className="text-neutral-500 text-center mt-4 font-light">
-                <div onClick={loginModal.onClose} className=' justify-center flex flex-row items-center gap-2'>
-                    <div>Already have account?</div>
-                    <div className='text-neutral-800 cursor-pointer hover:underline' >Log in</div>
+                <div onClick={toggle} className=' justify-center flex flex-row items-center gap-2'>
+                    <div>First time using Airbnb?</div>
+                    <div className='text-neutral-800 cursor-pointer hover:underline' >Create account</div>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 'use client'
-import { Container } from "../Container"
+import { Container } from "../Container";
 import { GiBarn, GiBoatFishing, GiCactus, GiCastle, GiCaveEntrance, GiForestCamp, GiIsland, GiWindmill } from 'react-icons/gi';
 import { FaSkiing } from 'react-icons/fa';
 import { BsSnow } from 'react-icons/bs';
@@ -88,9 +88,9 @@ export const categories = [
     }
 ]
 
-export const Categories = ({label}) => {
+export const Categories = () => {
     const params = useSearchParams();
-    const pathName  = usePathname()
+    const pathName = usePathname()
     const category = params?.get('category');
     const mainPage = pathName === '/';
     if (!mainPage) return null;
@@ -98,9 +98,9 @@ export const Categories = ({label}) => {
        
         <Container>
             <div className="pt-4 flex flex-row items-center justify-between overflow-x-auto">
-                {categories.map(({ label, icon, description }) => <CategoryBox key={label} label={label} selected={label === category} icon={icon} />)}
+                {categories.map(({ label, icon }) => <CategoryBox key={label} label={label} selected={label === category} icon={icon} />)}
             </div>
         </Container>
     );
-}
+};
 
