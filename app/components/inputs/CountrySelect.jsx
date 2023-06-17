@@ -13,7 +13,7 @@ export const CountrySelect = ({ value, onChange }) => {
                 isClearable options={getAll()}
                 value={value}
                 onChange={(value) => onChange(value)}
-                formatOptionLabel={({ flag, label, region }) => (<div className='flex fle[-row items-center gap-3'><div>{flag}</div><div>{label}, <span className='text-neutral-500 ml-1'>{region}</span></div></div>)}
+                formatOptionLabel={({ flag, label, region }) => <div className='flex fle[-row items-center gap-3'><div>{flag}</div><div>{label}, <span className='text-neutral-500 ml-1'>{region}</span></div></div>}
             />
         </div>
     );
