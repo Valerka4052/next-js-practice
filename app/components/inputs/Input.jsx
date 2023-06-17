@@ -40,7 +40,8 @@ export const Input = ({ id, label, type, disabled, formatPrice, required, regist
                        peer-focus:scale-75
                         peer-focus:-translate-y-4
                        ${errors[id] ? 'text-rose-500' : 'text-zinc-400'} `}
-            >{label}</label>
+            >{label}
+            </label>
         </div>
     );
 };

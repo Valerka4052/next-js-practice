@@ -49,7 +49,7 @@ export const RentModal = () => {
         setisLoading(true);
         console.log('data', data)
         axios.post('/api/listings', data)
-            .then(() => { toast.success('Listing created!'); router.refresh(); reset().setStep(steps.category); rentModal.onClose(); })
+            .then(() => { toast.success('Listing created!'); router.refresh(); reset(); setStep(steps.category); rentModal.onClose(); })
             .catch(() => { toast.error('Somethig went wrong') })
             .finally(() => setisLoading(false));
     };

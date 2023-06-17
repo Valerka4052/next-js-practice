@@ -4,7 +4,6 @@ import useCountries from "@/app/hooks/UseCountries";
 
 export const CountrySelect = ({ value, onChange }) => {
     const { getAll } = useCountries();
-    console.log(getAll());
     return (
         <div className="">
             <Select

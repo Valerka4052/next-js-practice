@@ -5,8 +5,7 @@ import { useCallback } from "react";
 import { TbPhotoPlus } from "react-icons/tb";
 
 export const ImageUpload = ({ onChange, value, }) => {
-    const handleUpload = useCallback((result) => { onChange(result.info.secure_url) }, [onChange]);
-    console.log('value', value)
+  const handleUpload = useCallback((result) => { onChange(result.info.secure_url) }, [onChange]);
   return (
     <CldUploadWidget onUpload={handleUpload} uploadPreset="iicz9czb" options={{ maxFiles: 1 }} >
       {({ open }) => {
@@ -20,5 +19,5 @@ export const ImageUpload = ({ onChange, value, }) => {
       }}
     </CldUploadWidget>
   );
-}
+};
 
