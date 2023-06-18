@@ -19,9 +19,9 @@ const useFavorite = ({ listingId, currentUser }) => {
             try {
                 let request;
                 if (hasFavorite) {
-                    request = () => axios.delete(`api/favorites/${listingId}`);
+                                        request = () => axios.delete(`/api/favorites/${listingId}`);
                 } else {
-                    request = () => axios.post(`api/favorites/${listingId}`);
+                     request = () => axios.post(`/api/favorites/${listingId}`);
                 }
                 await request();
                 router.refresh();

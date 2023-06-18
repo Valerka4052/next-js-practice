@@ -7,7 +7,6 @@ export async function POST(request,{params}) {
     const currentUser = await getCurrentUser();
     if (!currentUser) return NextResponse.error();
     const { listingId } = params;
-    console.log('listingId', listingId)
     if (!listingId || typeof (listingId) !== 'string') throw new Error('invalid ID');
     let favoriteIds = [...(currentUser.favoriteIds || [])];
     favoriteIds.push(listingId);
@@ -17,7 +16,7 @@ export async function POST(request,{params}) {
 export async function DELETE(request, { params }) {
 const currentUser = await getCurrentUser();
     if (!currentUser) return NextResponse.error();
-    const {listingId} = params;
+    const { listingId } = params;
     if (!listingId || typeof (listingId) !== 'string') throw new Error('invalid ID');
     let favoriteIds = [...(currentUser.favoriteIds || [])];
     const filteredIds = favoriteIds.filter(id => id !== listingId);
