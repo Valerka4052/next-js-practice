@@ -25,13 +25,13 @@ export const ListingCard = ({ data, currentUser, reservation, onAction, disabled
     }
     return data.price;
   }, [reservation, data.price]);
+
   const reservationDate = useMemo(() => {
-    if (!reservation) return null;
-    const start = new Date(reservation.startdate);
+    if (!reservation) return null
+    const start = new Date(reservation.startDate);
     const end = new Date(reservation.endDate);
     return `${format(start, 'PP')} - ${format(end, 'PP')}`;
   }, [reservation]);
-
   return (
     <div onClick={() => router.push(`/listings/${data.id}`)} className="col-span-1 cursor-pointer group">
       <div className="flex flex-col gap-2 w-full">

@@ -1,9 +1,12 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-const getListings = async () => {
+const getListings = async (params) => {
     try {
-        const listings = await prisma.listing.findMany({ orderBy: { createdAt: 'desc' } });
+        const { userId } = params;
+        let query = {};
+        if (userId) query.userId = userId;
+        const listings = await prisma.listing.findMany({where:query, orderBy: { createdAt: 'desc' } });
         return listings;
     } catch (error) {
         throw new Error(error);

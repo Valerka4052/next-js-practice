@@ -15,6 +15,7 @@ import { toast } from 'react-hot-toast';
 import { Button } from '../Button';
 
 
+
 export const RegisterModal = () => {
     const registerModal = useRegisterModal();
     const loginModal = useLoginModal()
@@ -29,7 +30,7 @@ export const RegisterModal = () => {
     const { register, handleSubmit, formState: { errors } } = useForm({ defaultValues: { name: '', email: '', password: '', } });
     const onSubmit = (data) => {
         setisLoading(true);
-        axios.post('/api/register', data).then(() => registerModal.onClose())
+        axios.post('/api/register', data).then(() => { registerModal.onClose(); loginModal.onOpen(); toast.success('Success')})
             .catch((error) => toast.error('Something went wrong'))
             .finally(setisLoading(false));
     };

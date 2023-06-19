@@ -5,9 +5,10 @@ import { Container } from "./components/Container";
 import { EmptyState } from "./components/EmptyState";
 import { ListingCard } from "./components/listings/ListingCard";
 
-export default async function Home() {
-const listings = await getListings()
-const currentUser = await getCurrentUser()
+const Home = async ({ searchParams }) => {
+  console.log('searchParams', searchParams)
+  const listings = await getListings(searchParams)
+  const currentUser = await getCurrentUser()
   if (listings.length === 0) return (
     <ClientOnly><EmptyState showReset /></ClientOnly>
   );
@@ -21,3 +22,4 @@ const currentUser = await getCurrentUser()
     </ClientOnly>
   );
 };
+export default Home

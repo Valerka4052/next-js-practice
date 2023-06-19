@@ -40,7 +40,7 @@ export const ListingClient = ({ currentUser, listing, reservations = [] }) => {
             if (!currentUser) return loginModal.onOpen();
             setIsLoading(true);
             axios.post('/api/reservations', { totalPrice, startDate: dateRange.startDate, endDate: dateRange.endDate, listingId: listing?.id })
-                .then(() => { toast.success('Listing reserved!'); setdateRange(initialDateRange); router.refresh() })
+                .then(() => { toast.success('Listing reserved!'); setdateRange(initialDateRange); router.push('/trips') })
                 .catch((error) => { toast.error('Something went wrong') })
                 .finally(() => setIsLoading(false));
       },
