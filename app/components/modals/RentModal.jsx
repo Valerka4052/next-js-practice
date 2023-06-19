@@ -37,8 +37,8 @@ export const RentModal = () => {
     const bathroomCount = watch('bathroomCount');
     const imageSrc = watch('imageSrc');
 
-
-    const Map = dynamic(() => import('../Map'), { ssr: false, });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const Map = useMemo(() => dynamic(() => import('../Map'), { ssr: false }), [location]);
     const setCustomValue = (id, value) => setValue(id, value, { shouldValidate: true, shouldDirty: true, shouldTouch: true, });
 
     const onBack = () => setStep(prev => prev - 1);
@@ -110,8 +110,7 @@ export const RentModal = () => {
                   <Heading title='How would you describe your place?' subtitle='Short and sweet works best!' />
                   <Input id='title' label='Title' disabled={isLoading} required register={register} errors={errors} />
                   <hr />
-                    <Input id='description' label='Descripton' disabled={isLoading} required register={register} errors={errors} />
-                 
+                  <Input id='description' label='Descripton' disabled={isLoading} required register={register} errors={errors} />
               </div>
           );
     };
